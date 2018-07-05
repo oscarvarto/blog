@@ -37,10 +37,11 @@ MARKUP = ('md', 'ipynb')
 IPYNB_USE_METACELL = True
 IPYNB_IGNORE_CSS=False
 IPYNB_EXTEND_STOP_SUMMARY_TAGS = [('h2', None), ('ol', None), ('ul', None)]
+IGNORE_FILES = ['.#*', '__pycache__', '.ipynb_checkpoints']
 
 JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}
 BOOTSTRAP_THEME = 'cosmo'
-THEME = '/home/oscarvarto/gitRepos/pelican-themes/pelican-bootstrap3'
+THEME = '../pelican-themes/pelican-bootstrap3'
 PYGMENTS_STYLE = 'monokai'
 
 MARKDOWN = {
@@ -54,5 +55,5 @@ MARKDOWN = {
 
 MATH_JAX = {'color': 'black', 'align': 'left', 'tex_extensions': ['color.js','mhchem.js']}
 
-PLUGIN_PATHS = ['/home/oscarvarto/gitRepos/pelican-plugins']
+PLUGIN_PATHS = ['../pelican-plugins/']
 PLUGINS = ['render_math', 'i18n_subsites', 'ipynb.markup', 'ipynb.liquid', 'liquid_tags.youtube', 'liquid_tags.b64img']
