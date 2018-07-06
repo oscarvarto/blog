@@ -38,6 +38,7 @@ IPYNB_USE_METACELL = True
 IPYNB_IGNORE_CSS=False
 IPYNB_EXTEND_STOP_SUMMARY_TAGS = [('h2', None), ('ol', None), ('ul', None)]
 IGNORE_FILES = ['.#*', '__pycache__', '.ipynb_checkpoints']
+IPYNB_PREPROCESSORS = ['pre_cite2c.BibTexPreprocessor']
 
 JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}
 BOOTSTRAP_THEME = 'cosmo'
