@@ -58,3 +58,4 @@ MATH_JAX = {'color': 'black', 'align': 'left', 'tex_extensions': ['color.js','mh
 
 PLUGIN_PATHS = ['../pelican-plugins/']
 PLUGINS = ['render_math', 'i18n_subsites', 'ipynb.markup', 'ipynb.liquid', 'liquid_tags.youtube', 'liquid_tags.b64img']
+STATIC_PATHS = ['data']
