@@ -297,6 +297,8 @@
     \hypertarget{data-clustering}{%
 \section{Data Clustering}\label{data-clustering}}
 
+This post is based on \cite{727676/I2CEQB43}.
+
 Data clustering is a process of assigning a set of records into subsets,
 called clusters, such that records in the same cluster are similar and
 records in different clusters are quite distinct.
@@ -372,7 +374,7 @@ Based on the cluster memberships \(\gamma_0^{(0)}\), \(\gamma_1^{(0)}\),
 \(\cdots\), \(\gamma_{n - 1}^{(0)}\), the \emph{k-means} algorithm
 updates the cluster centers as follows: \begin{equation}
 \label{center-update}
-\boldsymbol{\boldsymbol{\mu}}_j^{(1)} = \frac{1}{\left| \left\{ i \middle| \gamma_i^{(0)} = j\right\} \right|} \sum_{i = 0, \gamma_i^{(0)} = j}\mathbf{x}_i, \qquad\text{$j = 0$, $1$, $\cdots$, $k - 1$}
+\boldsymbol{\boldsymbol{\mu}}_j^{(1)} = \frac{1}{\left| \left\{ i \middle| \gamma_i^{(0)} = j\right\} \right|} \sum_{i = 0, \gamma_i^{(0)} = j}^{n - 1}\mathbf{x}_i, \qquad\text{$j = 0$, $1$, $\cdots$, $k - 1$}
 \end{equation}
 
 Then the \emph{k-means} algorithm repeats updating the cluster
@@ -568,6 +570,8 @@ Spark}\label{to-practice-with-scala-and-spark}}
   Visualize using \href{https://github.com/vegas-viz/Vegas}{Vegas} or
   any other good quality library of your preference.
 \end{enumerate}
+
+    
 
 
     % Add a bibliography block to the postdoc
