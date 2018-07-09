@@ -153,7 +153,7 @@ where $\operatorname{argmin}$ is the argument that minimizes the distance. That 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Reviewing-the-math-above-with-some-examples">Reviewing the math above with some examples<a class="anchor-link" href="#Reviewing-the-math-above-with-some-examples">¶</a></h2><p>The above can be understood completely if we understand the little pieces, and try to make sense of ideas behind the math. So, don't be scared by the symbols. Let's review some notation first.</p>
-<p>$\lvert C_{i} \rvert$ in this context, means the <em>cardinality</em> of the set $C_{i}$, that is, the size of the set. In mathematics, the cardinality of a set is a measure of the "number of elements of the set".</p>
+<p><strong>$\lvert C_{i} \rvert$ in this context, means the <em>cardinality</em> of the set $C_{i}$</strong>, that is, the size of the set. In mathematics, the cardinality of a set is a measure of the "number of elements of the set".</p>
 </div>
 </div>
 </div>
@@ -320,6 +320,29 @@ $$\frac{1 + 2 + 4}{3} = 2.33333333$$</li>
 <li>Second component:
 $$\frac{2 + 5 + 7}{3} = 4.66666667$$</li>
 </ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Objective-function">Objective function<a class="anchor-link" href="#Objective-function">¶</a></h2><h3 id="First-form-of-the-objective-function">First form of the objective function<a class="anchor-link" href="#First-form-of-the-objective-function">¶</a></h3><p>Let's review:
+$$E = \sum_{i = 0}^{k - 1}\sum_{\mathbf{x} \in C_i} D(\mathbf{x}, \boldsymbol{\mu}_i)$$</p>
+<p>The inner summation,
+$$\sum_{\mathbf{x} \in C_i} D(\mathbf{x}, \boldsymbol{\mu}_i)$$
+says something like: compute the sum of all the distances for the <em>i</em>-th cluster. Notice the requirement in the summation index: $\mathbf{x} \in C_i$ (<em>only</em> consider those vectors that belong to cluster $C_i$).</p>
+<p>The outer summation,
+$$E = \sum_{i = 0}^{k - 1} \text{sum of distances for the $i$-th cluster}$$
+simply says, that you have to accumulate the inner computation for all the clusters.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Second-form-of-the-objective-function-and-cluster-membership-notation">Second form of the objective function and cluster membership notation<a class="anchor-link" href="#Second-form-of-the-objective-function-and-cluster-membership-notation">¶</a></h3><p>(<em>Work in progress</em>)</p>
 </div>
 </div>
 </div>
