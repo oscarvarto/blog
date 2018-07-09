@@ -199,7 +199,7 @@ where $\operatorname{argmin}$ is the argument that minimizes the distance. That 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [10]:</div>
+<div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Numpy ndarrays are often used in python to represent vectors.</span>
@@ -219,7 +219,7 @@ where $\operatorname{argmin}$ is the argument that minimizes the distance. That 
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[10]:</div>
+<div class="prompt output_prompt">Out[2]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>True</pre>
 </div>
@@ -342,7 +342,39 @@ simply says, that you have to accumulate the inner computation for all the clust
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Second-form-of-the-objective-function-and-cluster-membership-notation">Second form of the objective function and cluster membership notation<a class="anchor-link" href="#Second-form-of-the-objective-function-and-cluster-membership-notation">¶</a></h3><p>(<em>Work in progress</em>)</p>
+<h3 id="Second-form-of-the-objective-function-and-cluster-membership-notation">Second form of the objective function and cluster membership notation<a class="anchor-link" href="#Second-form-of-the-objective-function-and-cluster-membership-notation">¶</a></h3><p>The second form of the objective function, uses more compact notation:</p>
+<p>$$E = \sum_{i = 0}^{n - 1}D(\mathbf{x}_i, \boldsymbol{\mu}_{\gamma_i})$$</p>
+<p>It says: <em>compute the sum of the distances between a vector and it's corresponding cluster center</em>, for all the vectors in the dataset. Notice that $D(\mathbf{x}_i, \boldsymbol{\mu}_{\gamma_i})$ implies that we have a way to compute the cluster membership function: $\gamma_i$.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Cluster-membership-update">Cluster membership update<a class="anchor-link" href="#Cluster-membership-update">¶</a></h3><p>Let's review \ref{membership-update}:</p>
+<p>$$\gamma_i^{(0)} = \underset{0 \leq j \leq k - 1}{\operatorname{argmin}} D(\mathbf{x}_i, \boldsymbol{\mu}_j^{(0)})$$</p>
+<p>Text above says:</p>
+<blockquote><p>$\gamma_{i}^0$ is set to the index of the cluster to which $\mathbf{x}_{i}$ has the smallest distance.</p>
+</blockquote>
+<p>Notice that we are assuming an <strong>iterative process</strong>. The superscript introduced here $^{(0)}$ refers to the number of iteration: the cluster membership update $0$.</p>
+<p>The notation
+$$\underset{0 \leq j \leq k - 1}{\operatorname{argmin}} \text{distance to $j$-th cluster}$$
+means that we have to choose the cluster <strong>index</strong> $j$ (that could be any of the integer values from $0$ to $k - 1$) that minimizes the distance to current record $\mathbf{x}_i$.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Cluster-center-update">Cluster center update<a class="anchor-link" href="#Cluster-center-update">¶</a></h3><p>Now, let's review cluster center update formula \ref{center-update} notation:</p>
+<p>$$\boldsymbol{\boldsymbol{\mu}}_j^{(1)} = \frac{1}{\left| \left\{ i \middle| \gamma_i^{(0)} = j\right\} \right|} \sum_{i = 0, \gamma_i^{(0)} = j}^{n - 1}\mathbf{x}_i, \qquad\text{$j = 0$, $1$, $\cdots$, $k - 1$}$$</p>
+<p>We are again using the <em>membership function</em> $\gamma_i$ to simplify notation. The outer index $j$, says that we have to update the cluster center computation for each one of the $k$ clusters.</p>
+<p>For a specific value of $j$ (we are <em>re</em>-computing the center for $j$-th cluster), we simply have to use the cluster center formula, but we have to consider only those records that belong to this cluster:<br />
+$$\sum_{i = 0, \gamma_i^{(0)} = j}^{n - 1}\mathbf{x}_i$$
+Notice the requirement in the summation index: sum every record, as long as $\gamma_{i} = j$ (as long as record belongs to $j$-th cluster).</p>
+<p>$\left| \left\{ i \middle| \gamma_i^{(0)} = j\right\} \right|$ is simply the number of elements of $j$-th cluster. It says: the cardinality of the set of all indexes $i$, <em>such that</em> $i$-th record belongs to cluster $j$.</p>
 </div>
 </div>
 </div>
