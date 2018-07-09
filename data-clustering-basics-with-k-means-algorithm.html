@@ -20,7 +20,7 @@
         <meta property="og:title" content="Data clustering basics with k-means algorithm"/>
         <meta property="og:url" content="/data-clustering-basics-with-k-means-algorithm.html"/>
         <meta property="og:description" content="Data Clustering¶This post is based on (Gan). Data clustering is a process of assigning a set of records into subsets, called clusters, such that records in the same cluster are similar and records in different clusters are quite distinct. A typical clustering process involves the following five steps:"/>
-        <meta property="article:published_time" content="2018-06-29" />
+        <meta property="article:published_time" content="2018-07-09" />
             <meta property="article:section" content="Clustering" />
             <meta property="article:tag" content="k-means" />
             <meta property="article:author" content="Oscar Vargas Torres" />
@@ -90,7 +90,7 @@ oscarvarto's blog            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2018-06-29T00:00:00-05:00"> Fri 29 June 2018</time>
+        <i class="fa fa-calendar"></i><time datetime="2018-07-09T00:00:00-05:00"> Mon 09 July 2018</time>
     </span>
 
 
@@ -327,7 +327,7 @@ $$\frac{2 + 5 + 7}{3} = 4.66666667$$</li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Objective-function">Objective function<a class="anchor-link" href="#Objective-function">¶</a></h2><h3 id="First-form-of-the-objective-function">First form of the objective function<a class="anchor-link" href="#First-form-of-the-objective-function">¶</a></h3><p>Let's review:
+<h3 id="Objective-function">Objective function<a class="anchor-link" href="#Objective-function">¶</a></h3><h4 id="First-form-of-the-objective-function">First form of the objective function<a class="anchor-link" href="#First-form-of-the-objective-function">¶</a></h4><p>Let's review:
 $$E = \sum_{i = 0}^{k - 1}\sum_{\mathbf{x} \in C_i} D(\mathbf{x}, \boldsymbol{\mu}_i)$$</p>
 <p>The inner summation,
 $$\sum_{\mathbf{x} \in C_i} D(\mathbf{x}, \boldsymbol{\mu}_i)$$
@@ -342,7 +342,7 @@ simply says, that you have to accumulate the inner computation for all the clust
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Second-form-of-the-objective-function-and-cluster-membership-notation">Second form of the objective function and cluster membership notation<a class="anchor-link" href="#Second-form-of-the-objective-function-and-cluster-membership-notation">¶</a></h3><p>The second form of the objective function, uses more compact notation:</p>
+<h4 id="Second-form-of-the-objective-function-and-cluster-membership-notation">Second form of the objective function and cluster membership notation<a class="anchor-link" href="#Second-form-of-the-objective-function-and-cluster-membership-notation">¶</a></h4><p>The second form of the objective function, uses more compact notation:</p>
 <p>$$E = \sum_{i = 0}^{n - 1}D(\mathbf{x}_i, \boldsymbol{\mu}_{\gamma_i})$$</p>
 <p>It says: <em>compute the sum of the distances between a vector and it's corresponding cluster center</em>, for all the vectors in the dataset. Notice that $D(\mathbf{x}_i, \boldsymbol{\mu}_{\gamma_i})$ implies that we have a way to compute the cluster membership function: $\gamma_i$.</p>
 </div>
