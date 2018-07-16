@@ -13,13 +13,13 @@
 
         <meta name="author" content="Oscar Vargas Torres" />
         <meta name="keywords" content="mkl" />
-        <meta name="description" content="Using High Performance Libraries with Python¶" />
+        <meta name="description" content="Compiling Tensorflow with Intel MKL support for Mac¶The simplest and fastest way to get Intel MKL support in tensorflow is by using Intel Distribution for Python with the conda package manager. By using the intelpython3_full (providing Python 3.6.3 at the moment), you get numpy and scipy MKL-accelerated libraries out of the box. Unfortunately, there is not an easy way to install Tensorflow compiled with MKL support on Mac OS X" />
 
         <meta property="og:site_name" content="oscarvarto's blog" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="Using High Performance Libraries with Python"/>
         <meta property="og:url" content="/using-high-performance-libraries-with-python.html"/>
-        <meta property="og:description" content="Using High Performance Libraries with Python¶"/>
+        <meta property="og:description" content="Compiling Tensorflow with Intel MKL support for Mac¶The simplest and fastest way to get Intel MKL support in tensorflow is by using Intel Distribution for Python with the conda package manager. By using the intelpython3_full (providing Python 3.6.3 at the moment), you get numpy and scipy MKL-accelerated libraries out of the box. Unfortunately, there is not an easy way to install Tensorflow compiled with MKL support on Mac OS X"/>
         <meta property="article:published_time" content="2018-07-16" />
             <meta property="article:section" content="Setup" />
             <meta property="article:tag" content="mkl" />
@@ -110,7 +110,7 @@ oscarvarto's blog            </a>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Using-High-Performance-Libraries-with-Python">Using High Performance Libraries with Python<a class="anchor-link" href="#Using-High-Performance-Libraries-with-Python">¶</a></h1><h2 id="Compiling-Tensorflow-with-Intel-MKL-support-for-Mac">Compiling Tensorflow with Intel MKL support for Mac<a class="anchor-link" href="#Compiling-Tensorflow-with-Intel-MKL-support-for-Mac">¶</a></h2><p>The simplest and fastest way to get Intel MKL support in tensorflow is by using <a href="https://software.intel.com/en-us/articles/using-intel-distribution-for-python-with-anaconda">Intel Distribution for Python</a> with the conda package manager.</p>
+<h1 id="Compiling-Tensorflow-with-Intel-MKL-support-for-Mac">Compiling Tensorflow with Intel MKL support for Mac<a class="anchor-link" href="#Compiling-Tensorflow-with-Intel-MKL-support-for-Mac">¶</a></h1><p>The simplest and fastest way to get Intel MKL support in tensorflow is by using <a href="https://software.intel.com/en-us/articles/using-intel-distribution-for-python-with-anaconda">Intel Distribution for Python</a> with the conda package manager.</p>
 <p>By using the <code>intelpython3_full</code> (providing Python 3.6.3 at the moment), you get <code>numpy</code> and <code>scipy</code> MKL-accelerated libraries out of the box. Unfortunately, there is not an easy way to install Tensorflow compiled with MKL support <em>on Mac OS X</em> at this moment. We must compile the library from source to get MKL support.</p>
 <p>Here are the steps <em>I</em> followed:</p>
 <p><em>1</em>. Get <a href="https://software.intel.com/en-us/articles/using-intel-distribution-for-python-with-anaconda">Intel Distribution for Python</a>.</p>
