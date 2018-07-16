@@ -181,6 +181,63 @@ requires_dist: ['absl-py (&gt;=0.1.6)', 'astor (&gt;=0.6.0)', 'gast (&gt;=0.2.0)
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Armadillo-with-Intel-MKL-Support-(Linear-Algebra)">Armadillo with Intel MKL Support (Linear Algebra)<a class="anchor-link" href="#Armadillo-with-Intel-MKL-Support-(Linear-Algebra)">¶</a></h1><p><a href="http://arma.sourceforge.net/">Armadillo</a> is a wonderful Linear Algebra C++ library "aiming towards a good balance between speed and ease of use". Syntax and functionality is "deliberately similar to Matlab". And you can take advantage of several high performance libraries, including Intel MKL.</p>
+<p>I installed Armadillo in Mac with homebrew:</p>
+<pre><code>$ brew install armadillo</code></pre>
+<p>I will be using Visual Studio Code and CMake to compile the following super simple C++ program (the emphasis here is on the build and linking with MKL).</p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="c1">//#define ARMA_DONT_USE_WRAPPER</span>
+<span class="cp">#include</span> <span class="cpf">&lt;armadillo&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">arma</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">char</span><span class="o">**</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">mat</span> <span class="n">A</span> <span class="o">=</span> <span class="n">randu</span><span class="o">&lt;</span><span class="n">mat</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+  <span class="n">mat</span> <span class="n">B</span> <span class="o">=</span> <span class="n">randu</span><span class="o">&lt;</span><span class="n">mat</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">A</span> <span class="o">*</span> <span class="n">B</span><span class="p">.</span><span class="n">t</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<p>I used the following extensions:</p>
+<ul>
+<li>CMake Tools</li>
+<li>CMake</li>
+<li>C/C++ by Microsoft.</li>
+</ul>
+<p>From the command palette, using <code>CMake: Quick Start</code>:</p>
+<p><img alt="CMake: Quick Start" src="images/cmake-quickstart.png" /></p>
+<p>Answer the quickstart questions, and the awesome vscode with the above extensions will create a skeleton project that will be easy to compile. I used a simple project named <code>HelloCMake</code>.</p>
+<p>Now, we will need to modify <code>CMakeLists.txt</code> in order to provide the right compilation and linking flags:</p>
+<div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">3.0.0</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">HelloCMake</span> <span class="s">VERSION</span> <span class="s">0.1.0</span><span class="p">)</span>
+
+<span class="nb">include</span><span class="p">(</span><span class="s">CTest</span><span class="p">)</span>
+<span class="nb">enable_testing</span><span class="p">()</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">HelloCMake</span> <span class="s">main.cpp</span><span class="p">)</span>
+
+<span class="nb">set</span><span class="p">(</span><span class="s">CPACK_PROJECT_NAME</span> <span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">CPACK_PROJECT_VERSION</span> <span class="o">${</span><span class="nv">PROJECT_VERSION</span><span class="o">}</span><span class="p">)</span>
+<span class="nb">include</span><span class="p">(</span><span class="s">CPack</span><span class="p">)</span>
+
+<span class="nb">find_package</span><span class="p">(</span><span class="s">Armadillo</span> <span class="s">REQUIRED</span><span class="p">)</span>
+<span class="c"># set(MKLROOT "/usr/local/anaconda3/envs/idp")</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">MKLROOT</span> <span class="s2">"/opt/intel/compilers_and_libraries_2018.3.185/mac/mkl"</span> <span class="s">CACHE</span> <span class="s">PATH</span> <span class="s2">"Folder contains Intel MKL libs"</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">MKL_LINK_LINE</span> <span class="s2">"-L${MKLROOT}/lib -Wl,-rpath,${MKLROOT}/lib -lmkl_rt -lpthread -lm -ldl -m64"</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">MKL_COMPILER_OPTIONS</span> <span class="s2">"-I${MKLROOT}/include"</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_FLAGS</span>  <span class="s2">"-DARMA_DONT_USE_WRAPPER -Ofast ${CMAKE_CXX_FLAGS} ${MKL_COMPILER_OPTIONS}"</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_EXE_LINKER_FLAGS</span>  <span class="s2">"${CMAKE_EXE_LINKER_FLAGS} ${MKL_LINK_LINE}"</span><span class="p">)</span>
+</pre></div>
+<p>I could find the right compilation and linking flags with help of the <a href="https://software.intel.com/en-us/articles/intel-mkl-link-line-advisor">Intel Math Kernel Library Link Line Advisor</a>.</p>
+<p>In <em>Mac OS X</em>, it is also possible to use the Accelerate framework to get hardware accelerated BLAS and LAPACK, by using <code>-framework Accelerate</code> instead. See <a href="http://arma.sourceforge.net/faq.html#linking">linking section in the Armadillo's FAQ page</a>.</p>
+</div>
+</div>
+</div>
 
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var mathjaxscript = document.createElement('script');
