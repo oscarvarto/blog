@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Using High Performance Libraries with Python - oscarvarto's blog</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/using-high-performance-libraries-with-python.html">
+
+        <meta name="author" content="Oscar Vargas Torres" />
+        <meta name="keywords" content="mkl" />
+        <meta name="description" content="Using High Performance Libraries with Python¶" />
+
+        <meta property="og:site_name" content="oscarvarto's blog" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Using High Performance Libraries with Python"/>
+        <meta property="og:url" content="/using-high-performance-libraries-with-python.html"/>
+        <meta property="og:description" content="Using High Performance Libraries with Python¶"/>
+        <meta property="article:published_time" content="2018-07-16" />
+            <meta property="article:section" content="Setup" />
+            <meta property="article:tag" content="mkl" />
+            <meta property="article:author" content="Oscar Vargas Torres" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.cosmo.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/monokai.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+oscarvarto's blog            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li >
+                            <a href="/category/clustering.html">Clustering</a>
+                        </li>
+                        <li class="active">
+                            <a href="/category/setup.html">Setup</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/using-high-performance-libraries-with-python.html"
+                       rel="bookmark"
+                       title="Permalink to Using High Performance Libraries with Python">
+                        Using High Performance Libraries with Python
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2018-07-16T00:00:00-05:00"> Mon 16 July 2018</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/mkl.html">mkl</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Using-High-Performance-Libraries-with-Python">Using High Performance Libraries with Python<a class="anchor-link" href="#Using-High-Performance-Libraries-with-Python">¶</a></h1><h2 id="Compiling-Tensorflow-with-Intel-MKL-support-for-Mac">Compiling Tensorflow with Intel MKL support for Mac<a class="anchor-link" href="#Compiling-Tensorflow-with-Intel-MKL-support-for-Mac">¶</a></h2><p>The simplest and fastest way to get Intel MKL support in tensorflow is by using <a href="https://software.intel.com/en-us/articles/using-intel-distribution-for-python-with-anaconda">Intel Distribution for Python</a> with the conda package manager.</p>
+<p>By using the <code>intelpython3_full</code> (providing Python 3.6.3 at the moment), you get <code>numpy</code> and <code>scipy</code> MKL-accelerated libraries out of the box. Unfortunately, there is not an easy way to install Tensorflow compiled with MKL support <em>on Mac OS X</em> at this moment. We must compile the library from source to get MKL support.</p>
+<p>Here are the steps <em>I</em> followed:</p>
+<p><em>1</em>. Get <a href="https://software.intel.com/en-us/articles/using-intel-distribution-for-python-with-anaconda">Intel Distribution for Python</a>.</p>
+<pre><code>$ conda create -n idp intelpython3_full python=3
+$ conda activate idp
+$ conda env list                                                                                                       
+# conda environments:
+#
+base                     /usr/local/anaconda3
+idp                   *  /usr/local/anaconda3/envs/idp</code></pre>
+<p>We will need to know where to find MKL libraries to be able to compile tensorflow. For my particular case, I will need to use <code>MKLROOT=/usr/local/anaconda3/envs/idp</code></p>
+<p><em>2</em>. Install <code>tensorflow=1.9.0</code> from <a href="https://github.com/aaronzs/conda-tensorflow">here</a></p>
+<pre><code># TensorFlow CPU only
+conda install -c aaronzs tensorflow</code></pre>
+<p>This is only done with the purpose of downloading tensorflow v1.9.0 dependencies. After we have compiled tensorflow with MKL support, we could uninstall this.</p>
+<p>I did modify my conda channel configuration to prioritize <code>intel</code> channel. Here is my <code>~/.condarc</code>:</p>
+<pre><code>channels:
+  - intel
+  - conda-forge
+  - defaults</code></pre>
+<p><em>3</em>. Clone Tensorflow repository. Choose v1.9.0 tag.</p>
+<pre><code>$ cd ~/gitRepos
+$ git clone git@github.com:tensorflow/tensorflow.git
+$ cd tensorflow
+$ git fetch --all --tags
+$ git checkout tags/v1.9.0 -b v1.9.0-local  # Creates a local branch named v1.9.0-local based on tag v1.9.0</code></pre>
+<p><em>4</em>. Configure your build to use local mkl installation (it is already downloaded with the Intel Distribution for Python). The following line works for <code>bash</code> and <code>zsh</code>.</p>
+<pre><code>yes "" | TF_NEED_MKL=1 TF_DOWNLOAD_MKL=0 MKL_INSTALL_PATH=/usr/local/anaconda3/envs/idp ./configure</code></pre>
+<p>For <code>fish</code> shell, you would need to use something like:</p>
+<pre><code>yes "" | env TF_NEED_MKL=1 TF_DOWNLOAD_MKL=0 MKL_INSTALL_PATH=/usr/local/anaconda3/envs/idp ./configure</code></pre>
+<p><em>5</em>. Build with the instructions set supported by my specific processor.
+To get this information, this can be useful (Mac OS X):</p>
+<pre><code>$ sysctl -a | grep machdep.cpu
+...
+machdep.cpu.features: FPU VME DE PSE TSC MSR PAE MCE CX8 APIC SEP MTRR PGE MCA CMOV PAT
+PSE36 CLFSH DS ACPI MMX FXSR SSE SSE2 SS HTT TM PBE SSE3 PCLMULQDQ DTES64 MON DSCPL VMX
+EST TM2 SSSE3 FMA CX16 TPR PDCM SSE4.1 SSE4.2 x2APIC MOVBE POPCNT AES PCID XSAVE OSXSAVE
+SEGLIM64 TSCTMR AVX1.0 RDRAND F16C
+machdep.cpu.leaf7_features: SMEP ERMS RDWRFSGS TSC_THREAD_OFFSET BMI1 AVX2 BMI2 INVPCID FPU_CSDS
+machdep.cpu.extfeatures: SYSCALL XD 1GBPAGE EM64T LAHF LZCNT RDTSCP TSCI
+...</code></pre>
+<p>The build line provided <a href="https://software.intel.com/en-us/articles/intel-optimization-for-tensorflow-installation-guide">here</a> considers instructions set not supported by a Mac Book Pro with a 2.2 GHz Intel Core i7:</p>
+<pre><code>bazel build --config=mkl -c opt --copt=-mavx --copt=-mavx2 --copt=-mfma --copt=-mavx512f
+--copt=-mavx512pf --copt=-mavx512cd --copt=-mavx512er --copt="-DEIGEN_USE_VML" //tensorflow/tools/pip_package:build_pip_package</code></pre>
+<p>Notice we would need support for various flavors of AVX-512 instruction set. See <a href="https://colfaxresearch.com/knl-avx512/">here</a> for more information on these instruction sets.</p>
+<p>So, for my supported instruction sets, I went with:</p>
+<pre><code>bazel build --config=mkl -c opt --copt=-mavx --copt=-mavx2 --copt=-mfma
+--copt=-msse4.2 --copt="-DEIGEN_USE_VML"      
+//tensorflow/tools/pip_package:build_pip_package</code></pre>
+<p>I have no GPU, so I cannot compile tensorflow with GPU support.</p>
+<p><em>6</em>. Produce the optimized tensorflow python wheel in <code>~/tensorflow-v190</code></p>
+<pre><code>bazel-bin/tensorflow/tools/pip_package/build_pip_package ~/tensorflow-v190</code></pre>
+<p><em>7</em>. Review the dependencies required by tensorflow python wheel. We will use python's <code>pkginfo</code> for that:</p>
+<pre><code>$ conda install pkginfo
+$ cd ~/tensorflow-v190
+$ pkginfo -f 'requires_dist' tensorflow-1.9.0-cp36-cp36m-macosx_10_6_x86_64.whl
+requires_dist: ['absl-py (&gt;=0.1.6)', 'astor (&gt;=0.6.0)', 'gast (&gt;=0.2.0)',
+'numpy (&gt;=1.13.3)', 'six (&gt;=1.10.0)', 'protobuf (&gt;=3.4.0)', 'setuptools (&lt;=39.1.0)',
+'tensorboard (&lt;1.10.0,&gt;=1.9.0)', 'termcolor (&gt;=1.1.0)',
+'grpcio (&gt;=1.8.6)', 'wheel (&gt;=0.26)']</code></pre>
+<p>I noticed that I needed to additionally install <code>grpcio</code>:</p>
+<pre><code>$ conda install grpcio</code></pre>
+<p><em>8</em>. Remove <code>tensorflow</code> from aaronzs' channel:</p>
+<pre><code>conda uninstall tensorflow</code></pre>
+<p><em>9</em>. Install compiled tensorflow wheel using pip, but without replacing intel's optimized libraries:</p>
+<pre><code>$ pip install --no-deps tensorflow-1.9.0-cp36-cp36m-macosx_10_6_x86_64.whl</code></pre>
+<p>Enjoy!</p>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="https://twitter.com/oscarvarto"><i class="fa fa-twitter-square fa-lg"></i> twitter</a></li>
+    <li class="list-group-item"><a href="https://github.com/oscarvarto"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+    <li class="list-group-item"><a href="https://www.linkedin.com/in/oscar-vargas-torres-32145546"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="https://www.scala-lang.org/" target="_blank">Scala-lang.org</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://python.org/" target="_blank">Python.org</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://www.haskell.org/" target="_blank">Haskell.org</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2018 Oscar Vargas Torres
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+
+
+
+</body>
+</html>
