@@ -56,6 +56,9 @@ MARKDOWN = {
 
 MATH_JAX = {'color': 'black', 'align': 'left', 'tex_extensions': ['color.js','mhchem.js']}
 
-PLUGIN_PATHS = ['../pelican-plugins/']
+
+PLUGIN_PATHS = ['./plugins', '../pelican-plugins/']
+#PLUGIN_PATHS = ['../pelican-plugins/']
+
 PLUGINS = ['render_math', 'i18n_subsites', 'ipynb.markup', 'ipynb.liquid', 'liquid_tags.youtube', 'liquid_tags.b64img']
 STATIC_PATHS = ['data', 'images']
