@@ -1,0 +1,27 @@
+name: blog
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - pelican
+  - typogrify
+  - beautifulsoup4
+  - markdown
+  - ghp-import
+  - jupyter
+  - jupyterlab
+  - jupyter_contrib_nbextensions
+  - ipython
+  - nbconvert
+  - lxml
+  - pylint
+  - unidecode
+  - jinja2
+  - matplotlib
+  - notebook
+  - pip:
+    - cite2c
+    - citeproc-py
+    - unicode-tex
+prefix: /home/oscarvarto/anaconda3/envs/blog
+
