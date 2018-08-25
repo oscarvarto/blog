@@ -14,7 +14,9 @@ alias gpush='git push origin master'
 
 ## Install dependencies (assuming Python 3.X)
 
-### Texlive
+### Texlive 
+
+(Optional)
 
 `apt get install texlive-full`
 (TODO: figure out a way to avoid the installation of `texlive-lang-*` packages)
@@ -32,18 +34,7 @@ sudo apt-get install zotero-standalone
 ## Repositories and dependencies needed
 
 1. Clone pelican-themes from `git@github.com:getpelican/pelican-themes.git` in a folder at the same (folder) level than this repo.
-2. `danielfrg/pelican-ipynb.git` is cloned at commit `292d29a` inside `plugins/ipynb`.
-
-oscarvarto.github.io should be cloned with the `--recursive` flag:
-`git clone git@github.com:oscarvarto/oscarvarto.github.io.git --recursive`
-
-or in three steps:
-
-```zsh
-git clone git@github.com:oscarvarto/oscarvarto.github.io.git
-cd oscarvarto.github.io
-git submodule update --init --recursive
-```
+2. pelican-ipynb from `git@github.com:danielfrg/pelican-ipynb.git` at commit `292d29a` inside `plugins/ipynb`.
 
 ## Blog development environment with `conda`
 
