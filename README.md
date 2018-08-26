@@ -45,4 +45,4 @@ blog &
 jupyter-notebook content &
 ```
 
-Just to make sure I have an exact copy of the environment available if necessary, I also exported my current conda environment with `conda env export > environment-2018-08-21.yml` and included it in the blog repository.
+Just to make sure I have an exact copy of the environment available if necessary, I also exported my current conda environment with `conda env export > environment-2018-08-25.yml` and included it in the blog repository.
