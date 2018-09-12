@@ -306,7 +306,51 @@ oscarvarto's blog            </a>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Immutability-in-the-context-of-Object-Oriented-Programming">Immutability in the context of Object Oriented Programming<a class="anchor-link" href="#Immutability-in-the-context-of-Object-Oriented-Programming">¶</a></h2><p>I will use examples from several programming languages that support Object Oriented Programming, mutability as well as immutability: Scala, F#, C#.</p>
+<h2 id="Immutability-in-the-context-of-Object-Oriented-Programming">Immutability in the context of Object Oriented Programming<a class="anchor-link" href="#Immutability-in-the-context-of-Object-Oriented-Programming">¶</a></h2><p>I will use examples from several programming languages that support Object Oriented Programming, mutability as well as immutability: Java, Scala, F#, C#.</p>
+<h3 id="Using-Java">Using Java<a class="anchor-link" href="#Using-Java">¶</a></h3><p>We are going to use Java to give an example (taken from <a href="https://www.reactivedesignpatterns.com/">Reactive Design Patterns</a> by Roland Kuhn, et. al.) of an unsafe mutable class, which may hide unexpected behavior:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Unsafe</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">Date</span> <span class="n">timestamp</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">StringBuffer</span> <span class="n">message</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Unsafe</span><span class="o">(</span><span class="n">Date</span> <span class="n">timestamp</span><span class="o">,</span> <span class="n">StringBuffer</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">timestamp</span> <span class="o">=</span> <span class="n">timestamp</span><span class="o">;</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">synchronized</span> <span class="n">Date</span> <span class="nf">getTimestamp</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">timestamp</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">synchronized</span> <span class="kt">void</span> <span class="nf">setTimestamp</span><span class="o">(</span><span class="n">Date</span> <span class="n">timestamp</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">timestamp</span> <span class="o">=</span> <span class="n">timestamp</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">StringBuffer</span> <span class="nf">getMessage</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">message</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+<p><strong>Can you spot the problems?</strong></p>
+<p>The following behaves predictably and is easier to reason about:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Immutable</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Date</span> <span class="n">timestamp</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">message</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Immutable</span><span class="o">(</span><span class="kd">final</span> <span class="n">Date</span> <span class="n">timestamp</span><span class="o">,</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">timestamp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">(</span><span class="n">timestamp</span><span class="o">.</span><span class="na">getTime</span><span class="o">());</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">Date</span> <span class="nf">getTimestamp</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">Date</span><span class="o">(</span><span class="n">timestamp</span><span class="o">.</span><span class="na">getTime</span><span class="o">());</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getMessage</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">message</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}}</span>
+</pre></div>
 <h3 id="Using-Scala">Using Scala<a class="anchor-link" href="#Using-Scala">¶</a></h3><p>Let's start with an example that stresses that using mutability forces to understand the context where this technique is used.</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Counter</span> <span class="o">{</span>
   <span class="k">private</span> <span class="k">var</span> <span class="n">value</span> <span class="k">=</span> <span class="mi">0</span>
@@ -352,6 +396,7 @@ oscarvarto's blog            </a>
 <p>In Scala, <strong>it is a best practice to avoid <code>var</code>s, and try to use <code>val</code>s for primitive types (the story has some subtleties for reference types) to avoid mutation and make your life easier</strong>.</p>
 <h3 id="Using-.NET-(F#-and-C#)">Using .NET (F# and C#)<a class="anchor-link" href="#Using-.NET-(F#-and-C#)">¶</a></h3><p>Take a look at this blog post: <a href="https://fsharpforfunandprofit.com/posts/correctness-immutability/">https://fsharpforfunandprofit.com/posts/correctness-immutability/</a></p>
 <h3 id="Immutable-Data-Structures-allow-easier-concurrency">Immutable Data Structures allow easier concurrency<a class="anchor-link" href="#Immutable-Data-Structures-allow-easier-concurrency">¶</a></h3><p>Take a look at <a href="https://clojure.org/about/concurrent_programming">https://clojure.org/about/concurrent_programming</a> to read how immutable data structures will ease multicore/multithreaded programming on the JVM with Clojure.</p>
+<h3 id="Global-Data-and-Mutable-Variables">Global Data and Mutable Variables<a class="anchor-link" href="#Global-Data-and-Mutable-Variables">¶</a></h3><p>Using mutable global variables can be very dangerous (AFAIK <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var">JavaScript allows this</a>). Take a look at a thorough discussion on this topic on <a href="http://aroma.vn/web/wp-content/uploads/2016/11/code-complete-2nd-edition-v413hav.pdf">Section 13.3 Global Data of Code Complete 2nd Edition, by Steve McConnell</a>.</p>
 <h2 id="Extra:-Avoiding--Null-Reference-Exceptions-by-using-descriptive-types.">Extra: Avoiding  Null Reference Exceptions by using descriptive types.<a class="anchor-link" href="#Extra:-Avoiding--Null-Reference-Exceptions-by-using-descriptive-types.">¶</a></h2><p>Sometimes people allow mutation of variables to encode the possibility that a value sometimes does not exist.
 To encode the absence of a value, they use <code>null</code>s. Like this:</p>
 <div class="highlight"><pre><span></span><span class="k">final</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">Configuration</span><span class="o">(</span><span class="n">numberOfCores</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
