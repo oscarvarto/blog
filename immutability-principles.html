@@ -113,7 +113,7 @@ oscarvarto's blog            </a>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Mutability-is-hard-to-reason-about">Mutability is hard to reason about<a class="anchor-link" href="#Mutability-is-hard-to-reason-about">¶</a></h2><p>A lot of programming languages support mutability. For example, Python can mutate objects in place (as well as JavaScript and a lot others):</p>
+<h2 id="Mutability-is-hard-to-reason-about">Mutability is hard to reason about<a class="anchor-link" href="#Mutability-is-hard-to-reason-about">¶</a></h2><p>A lot of programming languages support mutability. For example, some objects in Python are mutable:</p>
 </div>
 </div>
 </div>
@@ -327,6 +327,7 @@ oscarvarto's blog            </a>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
+
 <span class="n">A</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">'A'</span><span class="p">)</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">'B'</span><span class="p">)</span>
 <span class="n">F1</span> <span class="o">=</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">A</span><span class="p">],</span> <span class="n">B</span><span class="p">]</span>
@@ -356,27 +357,25 @@ oscarvarto's blog            </a>
         <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">y</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mf">11.7</span><span class="p">)</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mf">17.7</span><span class="p">)</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mf">5.0</span>
 
-    <span class="k">def</span> <span class="nf">dy</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">(</span><span class="mf">6.0</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mf">23.4</span><span class="p">)</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mf">17.7</span>
+<span class="k">def</span> <span class="nf">y</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mf">11.7</span><span class="p">)</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mf">17.7</span><span class="p">)</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mf">5.0</span>
 
-    <span class="k">def</span> <span class="nf">dy2</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">12</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mf">23.4</span>
+<span class="k">def</span> <span class="nf">dy</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mf">6.0</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mf">23.4</span><span class="p">)</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mf">17.7</span>
 
-    <span class="n">p</span> <span class="o">=</span> <span class="n">RootPlot</span><span class="p">(</span><span class="n">x_min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-                 <span class="n">x_max</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span>
-                 <span class="n">x_init</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span>
-                 <span class="n">output_file</span><span class="o">=</span><span class="s2">"simple_plot.png"</span><span class="p">)</span>
-    <span class="c1"># p.set(x_init=2.0)</span>
-    <span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">dy2</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="mi">12</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mf">23.4</span>
 
+<span class="n">p</span> <span class="o">=</span> <span class="n">RootPlot</span><span class="p">(</span><span class="n">x_min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+             <span class="n">x_max</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span>
+             <span class="n">x_init</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span>
+             <span class="n">output_file</span><span class="o">=</span><span class="s2">"simple_plot.png"</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
-    <span class="c1"># execute only if run as a script</span>
-    <span class="n">main</span><span class="p">()</span>
+<span class="c1"># This wouldn't change final result. You would still get a plot</span>
+<span class="c1"># from 0.0 to 4.0</span>
+<span class="c1"># p.set(x_init=2.0)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
