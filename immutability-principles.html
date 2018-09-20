@@ -336,7 +336,7 @@ oscarvarto's blog            </a>
 
 <span class="k">class</span> <span class="nc">RootPlot</span><span class="p">(</span><span class="n">PRecord</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">inv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_min</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_max</span><span class="p">,</span> <span class="s1">'x_min less than x_max'</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_min</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_max</span><span class="p">,</span> <span class="s1">'x_min bigger than x_max'</span>
     <span class="n">__invariant__</span> <span class="o">=</span> <span class="n">inv</span>
     <span class="n">x_min</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">x_max</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -355,7 +355,6 @@ oscarvarto's blog            </a>
         <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_file</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
 
 
 <span class="k">def</span> <span class="nf">y</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
@@ -509,7 +508,7 @@ oscarvarto's blog            </a>
 <span class="k">val</span> <span class="n">someCount</span> <span class="k">=</span> <span class="n">counter1</span><span class="o">.</span><span class="n">current</span>
 </pre></div>
 <p>Can you guess which is the value of someCount without studying the "Possibly big chunk of code"? Which is the value of <code>someCount</code>?</p>
-<p>Whereas the above example may feel fictitious, it illustrates one important point: Immutability allows you to focus your attention in less code, so it will be easier for you to catch errors, and the compiler can protect you from making mistakes. Final result: you will make less mistakes in your code (less bugs!).</p>
+<p>Whereas the above example may feel fictitious, it illustrates one important point: Immutability allows you to focus in less code, so it will be easier for you to catch errors, and the compiler can protect you from making mistakes. Final result: you will make less mistakes in your code (less bugs!).</p>
 <p>In Scala, <strong>it is a best practice to avoid <code>var</code>s, and try to use <code>val</code>s for primitive types (the story has some subtleties for reference types) to avoid mutation and make your life easier</strong>.</p>
 <h3 id="Using-.NET-(F#-and-C#)">Using .NET (F# and C#)<a class="anchor-link" href="#Using-.NET-(F#-and-C#)">¶</a></h3><p>Take a look at this blog post: <a href="https://fsharpforfunandprofit.com/posts/correctness-immutability/">https://fsharpforfunandprofit.com/posts/correctness-immutability/</a></p>
 <h3 id="Immutable-Data-Structures-allow-easier-concurrency">Immutable Data Structures allow easier concurrency<a class="anchor-link" href="#Immutable-Data-Structures-allow-easier-concurrency">¶</a></h3><p>Take a look at <a href="https://clojure.org/about/concurrent_programming">https://clojure.org/about/concurrent_programming</a> to read how immutable data structures will ease multicore/multithreaded programming on the JVM with Clojure.</p>
