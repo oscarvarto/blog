@@ -34,7 +34,8 @@ sudo apt-get install zotero-standalone
 ## Repositories and dependencies needed
 
 1. Clone pelican-themes from `git@github.com:getpelican/pelican-themes.git` in a folder at the same (folder) level than this repo.
-2. pelican-ipynb from `git@github.com:danielfrg/pelican-ipynb.git` at commit `292d29a` inside `plugins/ipynb`.
+2. pelican-ipynb from `git@github.com:danielfrg/pelican-ipynb.git` at commit `292d29a` inside `plugins/ipynb` (already cloned )
+3. https://github.com/getpelican/pelican-plugins
 
 ## Blog development environment with `conda`
 
