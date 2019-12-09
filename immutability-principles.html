@@ -36,8 +36,6 @@
 
 
 
-
-
 </head>
 <body>
 
@@ -99,7 +97,7 @@ oscarvarto's blog            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2018-09-12T00:00:00-05:00"> Wed 12 September 2018</time>
+        <i class="fa fa-calendar"></i><time datetime="2018-09-12T00:00:00-05:00"> mié 12 septiembre 2018</time>
     </span>
 
 
@@ -111,10 +109,8 @@ oscarvarto's blog            </a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+                <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Mutability-is-hard-to-reason-about">Mutability is hard to reason about<a class="anchor-link" href="#Mutability-is-hard-to-reason-about">¶</a></h2><p>A lot of programming languages support mutability. For example, some objects in Python are mutable:</p>
 </div>
@@ -125,7 +121,7 @@ oscarvarto's blog            </a>
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -136,7 +132,7 @@ oscarvarto's blog            </a>
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
 <span class="n">x</span>
 </pre></div>
 </div>
@@ -154,8 +150,7 @@ oscarvarto's blog            </a>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This may not seem problematic at first. A lot of people would argue that it is indeed necessary to program. However, when things can change, we sometimes are forced to understand more details than the bare minimum necessary. For example:</p>
 </div>
@@ -166,9 +161,9 @@ oscarvarto's blog            </a>
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This function is just for ilustration purposes.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># This function is just for ilustration purposes.</span>
 <span class="c1"># Imagine a situation where a very long and complex method mutates one of it's arguments...</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">TypeVar</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">TypeVar</span>
 <span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">'T'</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">m1</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -195,8 +190,7 @@ oscarvarto's blog            </a>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now, we have to dig into the implementation of <code>m1</code>, to understand how the method affects its arguments.</p>
 <p>A simpler approach is to rely on immutable data structures/variables. This may seem like a more difficult approach, but it makes programming easier in the long run.</p>
@@ -208,7 +202,7 @@ oscarvarto's blog            </a>
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Note: The example above serves to illustrate the problems with mutation.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Note: The example above serves to illustrate the problems with mutation.</span>
 <span class="c1"># Of course, it is not the *only* way to do it on Python.</span>
 <span class="c1"># For example, a more functional approach would be (using `List[T]`):</span>
 <span class="k">def</span> <span class="nf">m2</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
@@ -236,8 +230,7 @@ oscarvarto's blog            </a>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's use an immutable approach to the previous problem with <code>pyrsistent</code> Python's library:</p>
 </div>
@@ -248,7 +241,7 @@ oscarvarto's blog            </a>
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyrsistent</span> <span class="k">import</span> <span class="n">plist</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyrsistent</span> <span class="kn">import</span> <span class="n">plist</span>
 <span class="n">ns1</span> <span class="o">=</span> <span class="n">plist</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="n">ns1</span>
 </pre></div>
@@ -271,7 +264,7 @@ oscarvarto's blog            </a>
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ns2</span> <span class="o">=</span> <span class="n">ns1</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ns2</span> <span class="o">=</span> <span class="n">ns1</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
 <span class="n">ns2</span>
 </pre></div>
 </div>
@@ -293,7 +286,7 @@ oscarvarto's blog            </a>
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Notice that original list remains unmodified (it is an immutable/persistent data structure!)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Notice that original list remains unmodified (it is an immutable/persistent data structure!)</span>
 <span class="n">ns1</span>
 </pre></div>
 </div>
@@ -311,8 +304,7 @@ oscarvarto's blog            </a>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The following script, is a complete application of the concepts just presented.</p>
 </div>
@@ -323,9 +315,9 @@ oscarvarto's blog            </a>
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyrsistent</span> <span class="k">import</span> <span class="n">PRecord</span><span class="p">,</span> <span class="n">field</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">TypeVar</span>
-<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="k">import</span> <span class="n">newton</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyrsistent</span> <span class="kn">import</span> <span class="n">PRecord</span><span class="p">,</span> <span class="n">field</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">TypeVar</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">newton</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -384,8 +376,7 @@ oscarvarto's blog            </a>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Functional-programming-relies-on-immutability">Functional programming relies on immutability<a class="anchor-link" href="#Functional-programming-relies-on-immutability">¶</a></h2><p>Immutable data structures/collections exist in a lot of programming languages:</p>
 <ul>
@@ -422,53 +413,52 @@ oscarvarto's blog            </a>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Immutability-in-the-context-of-Object-Oriented-Programming">Immutability in the context of Object Oriented Programming<a class="anchor-link" href="#Immutability-in-the-context-of-Object-Oriented-Programming">¶</a></h2><p>I will use examples from several programming languages that support Object Oriented Programming, mutability as well as immutability: Java, Scala, F#, C#.</p>
 <h3 id="Using-Java">Using Java<a class="anchor-link" href="#Using-Java">¶</a></h3><p>We are going to use Java to give an example (taken from <a href="https://www.reactivedesignpatterns.com/">Reactive Design Patterns</a> by Roland Kuhn, et. al.) of an unsafe mutable class, which may hide unexpected behavior:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Unsafe</span> <span class="o">{</span>
-    <span class="kd">private</span> <span class="n">Date</span> <span class="n">timestamp</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="kd">final</span> <span class="n">StringBuffer</span> <span class="n">message</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Date</span><span class="p">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Unsafe</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="n">Date</span> <span class="n">timestamp</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">StringBuffer</span> <span class="n">message</span><span class="p">;</span>
 
-    <span class="kd">public</span> <span class="nf">Unsafe</span><span class="o">(</span><span class="n">Date</span> <span class="n">timestamp</span><span class="o">,</span> <span class="n">StringBuffer</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
-      <span class="k">this</span><span class="o">.</span><span class="na">timestamp</span> <span class="o">=</span> <span class="n">timestamp</span><span class="o">;</span>
-      <span class="k">this</span><span class="o">.</span><span class="na">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">;</span>
-    <span class="o">}</span>
+    <span class="kd">public</span> <span class="nf">Unsafe</span><span class="p">(</span><span class="n">Date</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">StringBuffer</span> <span class="n">message</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="na">timestamp</span> <span class="o">=</span> <span class="n">timestamp</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="na">message</span> <span class="o">=</span> <span class="n">message</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    <span class="kd">public</span> <span class="kd">synchronized</span> <span class="n">Date</span> <span class="nf">getTimestamp</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">timestamp</span><span class="o">;</span>
-    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">synchronized</span> <span class="n">Date</span> <span class="nf">getTimestamp</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">timestamp</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    <span class="kd">public</span> <span class="kd">synchronized</span> <span class="kt">void</span> <span class="nf">setTimestamp</span><span class="o">(</span><span class="n">Date</span> <span class="n">timestamp</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">timestamp</span> <span class="o">=</span> <span class="n">timestamp</span><span class="o">;</span>
-    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">synchronized</span> <span class="kt">void</span> <span class="nf">setTimestamp</span><span class="p">(</span><span class="n">Date</span> <span class="n">timestamp</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">timestamp</span> <span class="o">=</span> <span class="n">timestamp</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    <span class="kd">public</span> <span class="n">StringBuffer</span> <span class="nf">getMessage</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">message</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
+    <span class="kd">public</span> <span class="n">StringBuffer</span> <span class="nf">getMessage</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">message</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 <p><strong>Can you spot the problems?</strong></p>
 <p>The following behaves predictably and is easier to reason about:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Date</span><span class="p">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Immutable</span> <span class="o">{</span>
-    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Date</span> <span class="n">timestamp</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">message</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Immutable</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Date</span> <span class="n">timestamp</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">message</span><span class="p">;</span>
 
-    <span class="kd">public</span> <span class="nf">Immutable</span><span class="o">(</span><span class="kd">final</span> <span class="n">Date</span> <span class="n">timestamp</span><span class="o">,</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">timestamp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">(</span><span class="n">timestamp</span><span class="o">.</span><span class="na">getTime</span><span class="o">());</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">Immutable</span><span class="p">(</span><span class="kd">final</span> <span class="n">Date</span> <span class="n">timestamp</span><span class="p">,</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">timestamp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="p">(</span><span class="n">timestamp</span><span class="p">.</span><span class="na">getTime</span><span class="p">());</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">message</span> <span class="o">=</span> <span class="n">message</span><span class="p">;</span>
 
-    <span class="kd">public</span> <span class="n">Date</span> <span class="nf">getTimestamp</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="n">Date</span><span class="o">(</span><span class="n">timestamp</span><span class="o">.</span><span class="na">getTime</span><span class="o">());</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getMessage</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">message</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}}</span>
+    <span class="kd">public</span> <span class="n">Date</span> <span class="nf">getTimestamp</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">Date</span><span class="p">(</span><span class="n">timestamp</span><span class="p">.</span><span class="na">getTime</span><span class="p">());</span>
+    <span class="p">}</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getMessage</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">message</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}}</span>
 </pre></div>
 <h3 id="Using-Scala">Using Scala<a class="anchor-link" href="#Using-Scala">¶</a></h3><p>Let's start with an example that stresses that using mutability forces to understand the context where this technique is used.</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Counter</span> <span class="o">{</span>

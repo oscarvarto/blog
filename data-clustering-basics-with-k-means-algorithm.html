@@ -36,8 +36,6 @@
 
 
 
-
-
 </head>
 <body>
 
@@ -99,7 +97,7 @@ oscarvarto's blog            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2018-07-09T00:00:00-05:00"> Mon 09 July 2018</time>
+        <i class="fa fa-calendar"></i><time datetime="2018-07-09T00:00:00-05:00"> lun 09 julio 2018</time>
     </span>
 
 
@@ -111,10 +109,8 @@ oscarvarto's blog            </a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+                <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Data-Clustering">Data Clustering<a class="anchor-link" href="#Data-Clustering">¶</a></h1><p>This post is based on <a href="#727676/i2ceqb43">(Gan)</a>.</p>
 <p>Data clustering is a process of assigning a set of records into subsets, called clusters, such that records in the same cluster are similar and records in different clusters are quite distinct.</p>
@@ -131,8 +127,7 @@ oscarvarto's blog            </a>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="The-k-means-Algorithm">The <em>k-means</em> Algorithm<a class="anchor-link" href="#The-k-means-Algorithm">¶</a></h2><p>The <em>k-means</em> algorithm is the most popular and the simplest partitional clustering algorithm. It has many variations. This exercise will review the standard algorithm and several implementations (possibly for different variations).</p>
 <h3 id="Description-of-the-Algorithm">Description of the Algorithm<a class="anchor-link" href="#Description-of-the-Algorithm">¶</a></h3><p>Let $X = \left\{ \mathbf{x}_0, \mathbf{x}_1, \cdots, \mathbf{x}_{n - 1} \right\}$ be a numeric dataset containing $n$ records and $k$ be an integer in $\{1, 2, \cdots, n\}$. The <em>k-means</em> algorithm tries to divide the dataset into $k$ clusters $C_0$, $C_1$, $\cdots$, and $C_{k - 1}$ by minimizing the following objective function:
@@ -158,8 +153,7 @@ where $\operatorname{argmin}$ is the argument that minimizes the distance. That 
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Reviewing-the-math-above-with-some-examples">Reviewing the math above with some examples<a class="anchor-link" href="#Reviewing-the-math-above-with-some-examples">¶</a></h2><p>The above can be understood completely if we understand the little pieces, and try to make sense of ideas behind the math. So, don't be scared by the symbols. Let's review some notation first.</p>
 <p><strong>$\lvert C_{i} \rvert$ in this context, means the <em>cardinality</em> of the set $C_{i}$</strong>, that is, the size of the set. In mathematics, the cardinality of a set is a measure of the "number of elements of the set".</p>
@@ -171,7 +165,7 @@ where $\operatorname{argmin}$ is the argument that minimizes the distance. That 
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">S_1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="c1"># or { 1, 2, 3, 4, 5}</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">S_1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="c1"># or { 1, 2, 3, 4, 5}</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">S_1</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -189,18 +183,15 @@ where $\operatorname{argmin}$ is the argument that minimizes the distance. That 
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>$\mathbf{x} \in C_1$ means, the vector (notice the bold font face) $\mathbf{x}$ <em>belongs to</em> (or <em>is in</em>) the set $C_1$. For example,</p>
-<p>$$\begin{bmatrix} 1 \\ 2 \end{bmatrix} \in C_1$$</p>
-<p>means, the vector with two components $\left[1, 2\right]^T$ belongs to the <em>cluster</em> $C_1$</p>
+$$\begin{bmatrix} 1 \\ 2 \end{bmatrix} \in C_1$$<p>means, the vector with two components $\left[1, 2\right]^T$ belongs to the <em>cluster</em> $C_1$</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Centroid-definition">Centroid definition<a class="anchor-link" href="#Centroid-definition">¶</a></h3>
 </div>
@@ -211,7 +202,7 @@ where $\operatorname{argmin}$ is the argument that minimizes the distance. That 
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Numpy ndarrays are often used in python to represent vectors.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Numpy ndarrays are often used in python to represent vectors.</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="c1"># Notice we are informally using a 2-dimensional numpy array</span>
@@ -237,11 +228,9 @@ where $\operatorname{argmin}$ is the argument that minimizes the distance. That 
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>$$\sum_{\mathbf{x} \in C_1}\mathbf{x}$$
-means: the sum (<em>component-wise</em>) of all the vectors that belong to the first cluster $C_1$.</p>
+$$\sum_{\mathbf{x} \in C_1}\mathbf{x}$$<p>means: the sum (<em>component-wise</em>) of all the vectors that belong to the first cluster $C_1$.</p>
 </div>
 </div>
 </div>
@@ -250,7 +239,7 @@ means: the sum (<em>component-wise</em>) of all the vectors that belong to the f
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Use help(np.sum) or np.sum? (then press Tab key) to get more information about np.sum</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Use help(np.sum) or np.sum? (then press Tab key) to get more information about np.sum</span>
 <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">C_1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># or C_1.sum(0)</span>
 </pre></div>
 </div>
@@ -268,11 +257,9 @@ means: the sum (<em>component-wise</em>) of all the vectors that belong to the f
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>$$\boldsymbol{\mu}_1 = \frac{1}{\lvert C_1 \rvert} \sum_{\mathbf{x} \in C_1}\mathbf{x}$$</p>
-<p>The <em>centroid</em> (or cluster center) of the first cluster $C_1$ is computed with with a scalar multiplication. For our example:</p>
+$$\boldsymbol{\mu}_1 = \frac{1}{\lvert C_1 \rvert} \sum_{\mathbf{x} \in C_1}\mathbf{x}$$<p>The <em>centroid</em> (or cluster center) of the first cluster $C_1$ is computed with with a scalar multiplication. For our example:</p>
 </div>
 </div>
 </div>
@@ -281,7 +268,7 @@ means: the sum (<em>component-wise</em>) of all the vectors that belong to the f
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">1</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">C_1</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="mi">1</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">C_1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -302,7 +289,7 @@ means: the sum (<em>component-wise</em>) of all the vectors that belong to the f
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">1</span> <span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">C_1</span><span class="p">)</span> <span class="o">*</span> <span class="n">C_1</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="mi">1</span> <span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">C_1</span><span class="p">)</span> <span class="o">*</span> <span class="n">C_1</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -319,8 +306,7 @@ means: the sum (<em>component-wise</em>) of all the vectors that belong to the f
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In other words, the <em>centroid</em> formula is simply computing the <em>arithmetic mean</em> (component-wise) of the all the vectors of a given cluster:</p>
 <ul>
@@ -333,8 +319,7 @@ $$\frac{2 + 5 + 7}{3} = 4.66666667$$</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Objective-function">Objective function<a class="anchor-link" href="#Objective-function">¶</a></h3><h4 id="First-form-of-the-objective-function">First form of the objective function<a class="anchor-link" href="#First-form-of-the-objective-function">¶</a></h4><p>Let's review:
 $$E = \sum_{i = 0}^{k - 1}\sum_{\mathbf{x} \in C_i} D(\mathbf{x}, \boldsymbol{\mu}_i)$$</p>
@@ -348,22 +333,18 @@ simply says, that you have to accumulate the inner computation for all the clust
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Second-form-of-the-objective-function-and-cluster-membership-notation">Second form of the objective function and cluster membership notation<a class="anchor-link" href="#Second-form-of-the-objective-function-and-cluster-membership-notation">¶</a></h4><p>The second form of the objective function, uses more compact notation:</p>
-<p>$$E = \sum_{i = 0}^{n - 1}D(\mathbf{x}_i, \boldsymbol{\mu}_{\gamma_i})$$</p>
-<p>It says: <em>compute the sum of the distances between a vector and it's corresponding cluster center</em>, for all the vectors in the dataset. Notice that $D(\mathbf{x}_i, \boldsymbol{\mu}_{\gamma_i})$ implies that we have a way to compute the cluster membership function: $\gamma_i$.</p>
+$$E = \sum_{i = 0}^{n - 1}D(\mathbf{x}_i, \boldsymbol{\mu}_{\gamma_i})$$<p>It says: <em>compute the sum of the distances between a vector and it's corresponding cluster center</em>, for all the vectors in the dataset. Notice that $D(\mathbf{x}_i, \boldsymbol{\mu}_{\gamma_i})$ implies that we have a way to compute the cluster membership function: $\gamma_i$.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Cluster-membership-update">Cluster membership update<a class="anchor-link" href="#Cluster-membership-update">¶</a></h3><p>Let's review \ref{membership-update}:</p>
-<p>$$\gamma_i^{(0)} = \underset{0 \leq j \leq k - 1}{\operatorname{argmin}} D(\mathbf{x}_i, \boldsymbol{\mu}_j^{(0)})$$</p>
-<p>Text above says:</p>
+$$\gamma_i^{(0)} = \underset{0 \leq j \leq k - 1}{\operatorname{argmin}} D(\mathbf{x}_i, \boldsymbol{\mu}_j^{(0)})$$<p>Text above says:</p>
 <blockquote><p>$\gamma_{i}^0$ is set to the index of the cluster to which $\mathbf{x}_{i}$ has the smallest distance.</p>
 </blockquote>
 <p>Notice that we are assuming an <strong>iterative process</strong>. The superscript introduced here $^{(0)}$ refers to the number of iteration: the cluster membership update $0$.</p>
@@ -374,12 +355,10 @@ means that we have to choose the cluster <strong>index</strong> $j$ (that could 
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Cluster-center-update">Cluster center update<a class="anchor-link" href="#Cluster-center-update">¶</a></h3><p>Now, let's review cluster center update formula \ref{center-update} notation:</p>
-<p>$$\boldsymbol{\boldsymbol{\mu}}_j^{(1)} = \frac{1}{\left| \left\{ i \middle| \gamma_i^{(0)} = j\right\} \right|} \sum_{i = 0, \gamma_i^{(0)} = j}^{n - 1}\mathbf{x}_i, \qquad\text{$j = 0$, $1$, $\cdots$, $k - 1$}$$</p>
-<p>We are again using the <em>membership function</em> $\gamma_i$ to simplify notation. The outer index $j$, says that we have to update the cluster center computation for each one of the $k$ clusters.</p>
+$$\boldsymbol{\boldsymbol{\mu}}_j^{(1)} = \frac{1}{\left| \left\{ i \middle| \gamma_i^{(0)} = j\right\} \right|} \sum_{i = 0, \gamma_i^{(0)} = j}^{n - 1}\mathbf{x}_i, \qquad\text{$j = 0$, $1$, $\cdots$, $k - 1$}$$<p>We are again using the <em>membership function</em> $\gamma_i$ to simplify notation. The outer index $j$, says that we have to update the cluster center computation for each one of the $k$ clusters.</p>
 <p>For a specific value of $j$ (we are <em>re</em>-computing the center for $j$-th cluster), we simply have to use the cluster center formula, but we have to consider only those records that belong to this cluster:<br />
 $$\sum_{i = 0, \gamma_i^{(0)} = j}^{n - 1}\mathbf{x}_i$$
 Notice the requirement in the summation index: sum every record, as long as $\gamma_{i} = j$ (as long as record belongs to $j$-th cluster).</p>
@@ -388,8 +367,7 @@ Notice the requirement in the summation index: sum every record, as long as $\ga
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Exercises">Exercises<a class="anchor-link" href="#Exercises">¶</a></h2><p>Use <a href="data/600points.csv">this dataset</a>.</p>
 <h3 id="Visualization-of-dataset-for-exercises">Visualization of dataset for exercises<a class="anchor-link" href="#Visualization-of-dataset-for-exercises">¶</a></h3>
@@ -401,7 +379,7 @@ Notice the requirement in the summation index: sum every record, as long as $\ga
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
@@ -412,7 +390,7 @@ Notice the requirement in the summation index: sum every record, as long as $\ga
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">input_file</span> <span class="o">=</span> <span class="s2">"data/600points.csv"</span>
 
@@ -445,7 +423,7 @@ dtype: object</pre>
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># To visualize "named" colors see:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># To visualize "named" colors see:</span>
 <span class="c1"># https://matplotlib.org/1.4.3/examples/color/named_colors.html</span>
 <span class="n">label_to_color</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">'red'</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">'deepskyblue'</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">'green'</span><span class="p">}</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="n">labeled_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">'label'</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">label_to_color</span><span class="p">)</span>
@@ -458,7 +436,7 @@ dtype: object</pre>
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYQAAAEKCAYAAAASByJ7AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDIuMi4yLCBo
 dHRwOi8vbWF0cGxvdGxpYi5vcmcvhp/UCwAAIABJREFUeJzsnWd4VEXbgO+zPZsOgQRCb9I7iiAq
@@ -994,7 +972,7 @@ AAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Unlabeled data (prior to "clustering").</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Unlabeled data (prior to "clustering").</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">labeled_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">'x'</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">]]</span>
 <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s1">'x'</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 </pre></div>
@@ -1005,7 +983,7 @@ AAAAAElFTkSuQmCC
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYQAAAEKCAYAAAASByJ7AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDIuMi4yLCBo
 dHRwOi8vbWF0cGxvdGxpYi5vcmcvhp/UCwAAIABJREFUeJztvXt8VPWZx/95zplLbiRglGAIeGlA
@@ -1373,8 +1351,7 @@ wzAJWCEwDMMwAID/HzBwhsxcONShAAAAAElFTkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="To-practice-your-Python">To practice your Python<a class="anchor-link" href="#To-practice-your-Python">¶</a></h3><ol>
 <li>Use the kmeans implementation from scikit-learn to run the algorithm for k = 3 clusters and a max of 100 iterations. You can install that using pip (<code>$ pip install scikit-learn</code>) or anaconda, (<code>$ conda install scikit-learn</code>).    </li>
@@ -1421,8 +1398,7 @@ wzAJWCEwDMMwAID/HzBwhsxcONShAAAAAElFTkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><h2 id="bibliography">Bibliography</h2><p id="727676/i2ceqb43">Gan, G., <i>Data Clustering in C++: an object-oriented approach</i>, Chapman and Hall/CRC.</p></p>
 </div>

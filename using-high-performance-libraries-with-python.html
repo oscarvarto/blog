@@ -36,8 +36,6 @@
 
 
 
-
-
 </head>
 <body>
 
@@ -99,7 +97,7 @@ oscarvarto's blog            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2018-07-16T00:00:00-05:00"> Mon 16 July 2018</time>
+        <i class="fa fa-calendar"></i><time datetime="2018-07-16T00:00:00-05:00"> lun 16 julio 2018</time>
     </span>
 
 
@@ -111,10 +109,8 @@ oscarvarto's blog            </a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+                <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Compiling-Tensorflow-with-Intel-MKL-support-for-Mac">Compiling Tensorflow with Intel MKL support for Mac<a class="anchor-link" href="#Compiling-Tensorflow-with-Intel-MKL-support-for-Mac">¶</a></h1><p>The simplest and fastest way to get Intel MKL support in tensorflow is by using <a href="https://software.intel.com/en-us/articles/using-intel-distribution-for-python-with-anaconda">Intel Distribution for Python</a> with the conda package manager.</p>
 <p>By using the <code>intelpython3_full</code> (providing Python 3.6.3 at the moment), you get <code>numpy</code> and <code>scipy</code> MKL-accelerated libraries out of the box. Unfortunately, there is not an easy way to install Tensorflow compiled with MKL support <em>on Mac OS X</em> at this moment. We must compile the library from source to get MKL support.</p>
@@ -188,8 +184,7 @@ requires_dist: ['absl-py (&gt;=0.1.6)', 'astor (&gt;=0.6.0)', 'gast (&gt;=0.2.0)
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Armadillo-with-Intel-MKL-Support-(Linear-Algebra)">Armadillo with Intel MKL Support (Linear Algebra)<a class="anchor-link" href="#Armadillo-with-Intel-MKL-Support-(Linear-Algebra)">¶</a></h1><p><a href="http://arma.sourceforge.net/">Armadillo</a> is a wonderful Linear Algebra C++ library "aiming towards a good balance between speed and ease of use". Syntax and functionality is "deliberately similar to Matlab". And you can take advantage of several high performance libraries, including Intel MKL.</p>
 <p>I installed Armadillo in Mac with homebrew:</p>
