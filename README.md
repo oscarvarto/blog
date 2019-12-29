@@ -23,13 +23,8 @@ alias gpush='git push origin master'
 
 ### Zotero
 
-From https://github.com/smathot/zotero_installer:
-
-```zsh
-sudo add-apt-repository ppa:smathot/cogscinl
-sudo apt-get update
-sudo apt-get install zotero-standalone
-```
+https://github.com/retorquere/zotero-deb
+https://askubuntu.com/a/1160369
 
 ## Repositories and dependencies needed
 
