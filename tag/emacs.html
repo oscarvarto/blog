@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Setup - oscarvarto's blog</title>
+    <title>emacs - oscarvarto's blog</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -11,7 +11,7 @@
 
 
     <meta name="author" content="Oscar Vargas Torres" />
-    <meta name="keywords" content="Setup" />
+    <meta name="keywords" content="emacs" />
 
     <!-- Open Graph tags -->
         <meta property="og:site_name" content="oscarvarto's blog" />
@@ -60,7 +60,7 @@ oscarvarto's blog            </a>
                         <li >
                             <a href="/category/org-mode.html">Org-mode</a>
                         </li>
-                        <li class="active">
+                        <li >
                             <a href="/category/setup.html">Setup</a>
                         </li>
             </ul>
@@ -79,29 +79,9 @@ oscarvarto's blog            </a>
     <div class="row">
         <div class="col-sm-9">
             <article>
-                <h2><a href="/compiling-libtensorflow-in-ubuntu-1804-to-use-it-from-scala.html">Compiling libtensorflow in Ubuntu 18.04 to use it from Scala</a></h2>
-                <div class="summary"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Repositories-and-dependencies">Repositories and dependencies<a class="anchor-link" href="#Repositories-and-dependencies">&#182;</a></h1><p><a href="http://platanios.org/tensorflow_scala/installation.html">Installation instructions</a> provided for tensorflow_scala <a href="#727676/x4d3i4kt">(Platanios)</a> do not work at the moment of writing (2018-08-21). It may be related to differences in the supported hardware the native library was compiled for.</p>
-<p>So, it was necessary for me to compile libtensorflow.so from source:</p>
-
-<pre><code>git clone https://github.com/tensorflow/tensorflow.git
-cd tensorflow
-git checkout r1.9</code></pre>
-<p>I installed the Intel Distribution for Python, with instructions for <code>intelpython3_core</code>
-                    <a class="btn btn-default btn-xs" href="/compiling-libtensorflow-in-ubuntu-1804-to-use-it-from-scala.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2><a href="/using-high-performance-libraries-with-python.html">Using High Performance Libraries with Python</a></h2>
-                <div class="summary"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Compiling-Tensorflow-with-Intel-MKL-support-for-Mac">Compiling Tensorflow with Intel MKL support for Mac<a class="anchor-link" href="#Compiling-Tensorflow-with-Intel-MKL-support-for-Mac">&#182;</a></h1><p>The simplest and fastest way to get Intel MKL support in tensorflow is by using <a href="https://software.intel.com/en-us/articles/using-intel-distribution-for-python-with-anaconda">Intel Distribution for Python</a> with the conda package manager.</p>
-<p>By using the <code>intelpython3_full</code> (providing Python 3.6.3 at the moment), you get <code>numpy</code> and <code>scipy</code> MKL-accelerated libraries out of the box. Unfortunately, there is not an easy way to install Tensorflow compiled with MKL support <em>on Mac OS X</em>
-                    <a class="btn btn-default btn-xs" href="/using-high-performance-libraries-with-python.html">more ...</a>
+                <h2><a href="/hello-org.html">Blogging with org-mode and pelican</a></h2>
+                <div class="summary">This is a test
+                    <a class="btn btn-default btn-xs" href="/hello-org.html">more ...</a>
                 </div>
             </article>
             <hr/>
@@ -152,7 +132,7 @@ git checkout r1.9</code></pre>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2018 Oscar Vargas Torres
+         <div class="col-xs-10">&copy; 2019 Oscar Vargas Torres
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

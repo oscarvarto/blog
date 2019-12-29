@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Setup - oscarvarto's blog</title>
+    <title>Blogging with org-mode and pelican - oscarvarto's blog</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -9,16 +9,23 @@
 
 
 
+<link rel="canonical" href="/hello-org.html">
 
-    <meta name="author" content="Oscar Vargas Torres" />
-    <meta name="keywords" content="Setup" />
+        <meta name="author" content="Oscar Vargas Torres" />
+        <meta name="keywords" content="blogging,emacs,org-mode" />
+        <meta name="description" content="This is a test" />
 
-    <!-- Open Graph tags -->
         <meta property="og:site_name" content="oscarvarto's blog" />
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="oscarvarto's blog"/>
-        <meta property="og:url" content=""/>
-        <meta property="og:description" content="oscarvarto's blog"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Blogging with org-mode and pelican"/>
+        <meta property="og:url" content="/hello-org.html"/>
+        <meta property="og:description" content="This is a test"/>
+        <meta property="article:published_time" content="2019-12-29" />
+            <meta property="article:section" content="org-mode" />
+            <meta property="article:tag" content="blogging" />
+            <meta property="article:tag" content="emacs" />
+            <meta property="article:tag" content="org-mode" />
+            <meta property="article:author" content="Oscar Vargas Torres" />
 
 
 
@@ -57,10 +64,10 @@ oscarvarto's blog            </a>
                         <li >
                             <a href="/category/numerical-methods.html">Numerical methods</a>
                         </li>
-                        <li >
+                        <li class="active">
                             <a href="/category/org-mode.html">Org-mode</a>
                         </li>
-                        <li class="active">
+                        <li >
                             <a href="/category/setup.html">Setup</a>
                         </li>
             </ul>
@@ -78,33 +85,64 @@ oscarvarto's blog            </a>
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
-            <article>
-                <h2><a href="/compiling-libtensorflow-in-ubuntu-1804-to-use-it-from-scala.html">Compiling libtensorflow in Ubuntu 18.04 to use it from Scala</a></h2>
-                <div class="summary"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Repositories-and-dependencies">Repositories and dependencies<a class="anchor-link" href="#Repositories-and-dependencies">&#182;</a></h1><p><a href="http://platanios.org/tensorflow_scala/installation.html">Installation instructions</a> provided for tensorflow_scala <a href="#727676/x4d3i4kt">(Platanios)</a> do not work at the moment of writing (2018-08-21). It may be related to differences in the supported hardware the native library was compiled for.</p>
-<p>So, it was necessary for me to compile libtensorflow.so from source:</p>
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/hello-org.html"
+                       rel="bookmark"
+                       title="Permalink to Blogging with org-mode and pelican">
+                        Blogging with org-mode and pelican
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2019-12-29T00:00:00-06:00"> dom 29 diciembre 2019</time>
+    </span>
 
-<pre><code>git clone https://github.com/tensorflow/tensorflow.git
-cd tensorflow
-git checkout r1.9</code></pre>
-<p>I installed the Intel Distribution for Python, with instructions for <code>intelpython3_core</code>
-                    <a class="btn btn-default btn-xs" href="/compiling-libtensorflow-in-ubuntu-1804-to-use-it-from-scala.html">more ...</a>
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/blogging.html">blogging</a>
+        /
+	<a href="/tag/emacs.html">emacs</a>
+        /
+	<a href="/tag/org-mode.html">org-mode</a>
+    
+</footer><!-- /.post-info -->                    </div>
                 </div>
-            </article>
-            <hr/>
-            <article>
-                <h2><a href="/using-high-performance-libraries-with-python.html">Using High Performance Libraries with Python</a></h2>
-                <div class="summary"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Compiling-Tensorflow-with-Intel-MKL-support-for-Mac">Compiling Tensorflow with Intel MKL support for Mac<a class="anchor-link" href="#Compiling-Tensorflow-with-Intel-MKL-support-for-Mac">&#182;</a></h1><p>The simplest and fastest way to get Intel MKL support in tensorflow is by using <a href="https://software.intel.com/en-us/articles/using-intel-distribution-for-python-with-anaconda">Intel Distribution for Python</a> with the conda package manager.</p>
-<p>By using the <code>intelpython3_full</code> (providing Python 3.6.3 at the moment), you get <code>numpy</code> and <code>scipy</code> MKL-accelerated libraries out of the box. Unfortunately, there is not an easy way to install Tensorflow compiled with MKL support <em>on Mac OS X</em>
-                    <a class="btn btn-default btn-xs" href="/using-high-performance-libraries-with-python.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
+                <div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org373a077">1. Blogging with org-mode</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org373a077" class="outline-2">
+<h2 id="org373a077"><span class="section-number-2">1</span> Blogging with org-mode</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+It is possible to create blog entries with emacs' org-mode, by simply including
+an entry for <span class="underline">org reader</span> in <b>pelicanconf.py</b>. See 
+<a href="https://github.com/getpelican/pelican-plugins/tree/master/org_reader#org-emacs-reader">here for documentation</a>.
+</p>
+</div>
+</div>
+
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
 
         </div>
         <div class="col-sm-3" id="sidebar">
@@ -152,7 +190,7 @@ git checkout r1.9</code></pre>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2018 Oscar Vargas Torres
+         <div class="col-xs-10">&copy; 2019 Oscar Vargas Torres
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
