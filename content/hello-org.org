@@ -1,0 +1,14 @@
+#+TITLE: Blogging with org-mode and pelican
+#+DATE: 2019-12-29
+#+CATEGORY: org-mode
+#+AUTHOR: Oscar Vargas Torres
+#+PROPERTY: LANGUAGE en
+#+PROPERTY: SUMMARY This is a test
+#+PROPERTY: TAGS blogging, emacs, org-mode
+
+
+* Blogging with org-mode
+
+It is possible to create blog entries with emacs' org-mode, by simply including
+an entry for _org reader_ in *pelicanconf.py*. See 
+[[https://github.com/getpelican/pelican-plugins/tree/master/org_reader#org-emacs-reader][here for documentation]].
