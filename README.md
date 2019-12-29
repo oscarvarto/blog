@@ -29,8 +29,10 @@ https://askubuntu.com/a/1160369
 ## Repositories and dependencies needed
 
 1. Clone pelican-themes from `git@github.com:getpelican/pelican-themes.git` in a folder at the same (folder) level than this repo.
-2. pelican-ipynb from `git@github.com:danielfrg/pelican-ipynb.git` at commit `292d29a` inside `plugins/ipynb` (already cloned )
-3. https://github.com/getpelican/pelican-plugins
+2. https://github.com/getpelican/pelican-plugins
+
+
+**Note**: Previously, I cloned separately pelican-ipynb from `git@github.com:danielfrg/pelican-ipynb.git` at commit `292d29a` inside `plugins/ipynb`.
 
 ## Blog development environment with `conda`
 
@@ -39,6 +41,8 @@ conda env create -f environment.yml
 conda activate blog
 blog &
 jupyter-notebook content &
-```
+`****
 
-Just to make sure I have an exact copy of the environment available if necessary, I also exported my current conda environment with `conda env export > environment-2018-08-25.yml` and included it in the blog repository.
+**Old note**: just to make sure I have an exact copy of the environment available if necessary, I also exported my current conda environment with `conda env export > environment-2018-08-25.yml` and included it in the blog repository.
+
+Simply use environment.yml, and let anaconda solver do its job.

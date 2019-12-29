@@ -33,7 +33,7 @@ DEFAULT_PAGINATION = 5
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
-MARKUP = ('md', 'ipynb')
+MARKUP = ('md', 'ipynb', 'org')
 IPYNB_USE_METACELL = True
 IPYNB_IGNORE_CSS=False
 IPYNB_EXTEND_STOP_SUMMARY_TAGS = [('h2', None), ('ol', None), ('ul', None)]
@@ -56,7 +56,9 @@ MARKDOWN = {
 
 MATH_JAX = {'color': 'black', 'align': 'left', 'tex_extensions': ['color.js','mhchem.js']}
 
+ORG_READER_EMACS_LOCATION='/usr/bin/emacs'
+
 PLUGIN_PATHS = ['./plugins', '../pelican-plugins/']
 
-PLUGINS = ['render_math', 'i18n_subsites', 'ipynb.markup', 'ipynb.liquid', 'liquid_tags.youtube', 'liquid_tags.b64img']
+PLUGINS = ['render_math', 'i18n_subsites', 'pelican-ipynb.markup', 'pelican-ipynb.liquid', 'liquid_tags.youtube', 'liquid_tags.b64img', "org_reader"]
 STATIC_PATHS = ['data', 'images']
